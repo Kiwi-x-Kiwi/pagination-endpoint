@@ -11,7 +11,7 @@ const path         = require('path');
 
 
 mongoose
-  .connect('mongodb://localhost/pagination-endpoint', {useNewUrlParser: true})
+  .connect(process.env.MONGODB_LOCAL || `mongodb://localhost/please-set-process-env-mongodb-uri`, {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -53,6 +53,10 @@ app.locals.title = 'Paginated Endpoint';
 
 const index = require('./routes/index');
 app.use('/', index);
+
+// Endpoint returning the paginated results.
+const apps = require('./routes/apps');
+app.use('/apps', apps);
 
 
 module.exports = app;
