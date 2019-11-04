@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const uri = process.env.MONGODB_LOCAL || process.env.MONGODB_URI || `mongodb://localhost/please-set-process-env-mongodb-uri`
+const uri = process.env.MONGODB_TEST || process.env.MONGODB_LOCAL || process.env.MONGODB_URI || `mongodb://localhost/please-set-process-env-mongodb-uri`
 
 module.export = mongoose.connect(uri, {
         useUnifiedTopology: true,
