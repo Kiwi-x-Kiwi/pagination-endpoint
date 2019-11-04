@@ -17,12 +17,8 @@ router.get('/', async (req, res, next) => {
     let range = JSON.parse(req.query.range)
     let {by, start, end, max, order} = range;
 
-    if(!by){
-      res.render('parameter-error', {by})
-      return;
-    }else if(by !== 'name' && by !== 'id'){
-      res.render('parameter-error', {by})
-      return;
+    if (!by || (by !== 'name' && by !== 'id')){
+      return res.status(400).send({error: 'Invalid parameters provided!  range.by has to equal "name" or "id".'})
     }
 
     start = Math.max(start, 1) || 1;
@@ -30,9 +26,9 @@ router.get('/', async (req, res, next) => {
     end = Math.min(end, start + max -1) || start + max -1;
     order = order || 'asc';
 
-    if(order === 'asc'){
-      apps = apps.sort(sortHelper(by)).slice(start - 1, end)
-    }else apps = apps.sort(sortHelper(by)).reverse().slice(start - 1, end);
+    if(order === 'desc'){
+      apps = apps.sort(sortHelper(by)).reverse().slice(start - 1, end); 
+    } else apps = apps.sort(sortHelper(by)).slice(start - 1, end);
     
   }else apps = apps.slice(0, DEFAULT_SIZE)
 
