@@ -95,6 +95,22 @@ describe('GET /apps with range query', () =>{
     });
     done();
   })
+  test('It should respond with JSON Array starting at the "start" index and ending at the start + max index if no "end" index is provided', async (done) => {
+    const response = await request(app).get('/apps?range={"by":"id","start":5}');
+    const lastIndex = response.body.length -1;
+    expect(response.statusCode).toBe(200);
+    expect(Array.isArray(response.body)).toBe(true);
+    expect(response.body.length).toBeLessThanOrEqual(50);
+    expect(response.body[0]).toEqual({
+      id: 5,
+      name: 'my-app-005'
+    });
+    expect(response.body[lastIndex]).toEqual({
+      id: 54,
+      name: 'my-app-054'
+    });
+    done();
+  })
   test('It should respond with JSON Array starting at the "start" index and ending at start + max index if end > start + max ', async (done) => {
     const response = await request(app).get('/apps?range={"by":"id","start":900,"end":950}');
     const lastIndex = response.body.length - 1;
