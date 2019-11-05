@@ -1,5 +1,5 @@
 # pagination-endpoint
-![CircleCI Shield](https://img.shields.io/circleci/build/github/Kiwi-x-Kiwi/pagination-endpoint/master) ![Last Commit Shield](https://img.shields.io/github/last-commit/Kiwi-x-Kiwi/pagination-endpoint)
+[![CircleCI Shield](https://img.shields.io/circleci/build/github/Kiwi-x-Kiwi/pagination-endpoint/master)](https://github.com/Kiwi-x-Kiwi/pagination-endpoint/) [![Last Commit Shield](https://img.shields.io/github/last-commit/Kiwi-x-Kiwi/pagination-endpoint)](https://circleci.com/gh/Kiwi-x-Kiwi/pagination-endpoint)
 
 Pagination is a technique used to make large data sets more manageable and easier to work with.  This project aims to implement a basic API endpoint with paginated results closely following the guidelines provided by MDLive. 
 
