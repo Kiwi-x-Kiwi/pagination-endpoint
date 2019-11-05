@@ -18,7 +18,7 @@ router.get('/', async (req, res, next) => {
     let {by, start, end, max, order} = range;
 
     if (!by || (by !== 'name' && by !== 'id')){
-      return res.status(400).send({error: 'Invalid parameters provided!  range.by has to equal "name" or "id".'})
+      return res.status(400).send('undefined')
     }
 
     start = Math.max(start, 1) || 1;
