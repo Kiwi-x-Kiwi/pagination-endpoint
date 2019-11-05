@@ -48,14 +48,14 @@ The client can also provide a `range` query to the endpoint in the form of a JSO
 
 ### Example of Valid Ranges
 ```
-/apps?range={"by":"id"}
-/apps?range={"by":"id","start":1}
-/apps?range={"by":"id","start":5}
-/apps?range={"by":"id","start":1,"end":5}
-/apps?range={"by":"id","start":1,"max":5}
-/apps?range={"by":"id","start":1,"order":"desc"}
-/apps?range={"by":"id","start":5,"end":10,"max":10,"order":"asc"}
-/apps?range={"by":"name","start":"my-app-001","end":"my-app-050","max":10,"order":"asc"}
+[/apps?range={"by":"id"}](https://paginated-apps.herokuapp.com/apps?range={"by":"id"})
+[/apps?range={"by":"id","start":1}](https://paginated-apps.herokuapp.com/apps?range={"by":"id","start":1})
+[/apps?range={"by":"id","start":5}](https://paginated-apps.herokuapp.com/apps?range={"by":"id","start":5})
+[/apps?range={"by":"id","start":1,"end":5}](https://paginated-apps.herokuapp.com/apps?range={"by":"id","start":1,"end":5})
+[/apps?range={"by":"id","start":1,"max":5}](https://paginated-apps.herokuapp.com/apps?range={"by":"id","start":1,"max":5})
+[/apps?range={"by":"id","start":1,"order":"desc"}](https://paginated-apps.herokuapp.com/apps?range={"by":"id","start":1,"order":"desc"})
+[/apps?range={"by":"id","start":5,"end":10,"max":10,"order":"asc"}](https://paginated-apps.herokuapp.com/apps?range={"by":"id","start":5,"end":10,"max":10,"order":"asc"})
+[/apps?range={"by":"name","start":"my-app-001","end":"my-app-050","max":10,"order":"asc"}](https://paginated-apps.herokuapp.com/apps?range={"by":"name","start":"my-app-001","end":"my-app-050","max":10,"order":"asc"})
 
 ```
 
