@@ -38,11 +38,11 @@ The client can also provide a `range` query to the endpoint in the form of a JSO
 
 * `by`: Determines whether to sort by `id` or `name`.  Only required field and has to be either `id` or `name`.  In the event that the value is not provided or invalid, the server will return a 400 error code.
 
-* `start`: Determines the starting index in the form of a number or string depending on the `by` field.  Defaults to `1` if not provided or the value provided is `< 1`.
+* `start`: Determines the starting index in the form of a number or string depending on the `by` field.  Defaults to `1` or `my-app-001`, whichever is appropriate, if none were provided by client.  If a string is provided when a number is expected, or vice versa, the server will return a 400 error code.
 
-* `end`: Similar to the `start` field and is used in conjuction to restrict the range of the returned results.  If the provided value extends beyond the `max` field, the `max` field takes precedence.
+* `end`: Similar to the `start` field and is used in conjuction to restrict the range of the returned results. `start` must also be provided if using end, otherwise server will return 400 error code. If the provided value extends beyond the `max` field, the `max` field takes precedence.  Defaults to `253 - 1` and the app equivalent, whichever is appropriate, if none were provided by client.  If a string is provided when a number is expected, or vice versa, the server will return a 400 error code.
 
-* `max`: Determines the max amount of results to return from the database.  Defaults to `50` if not provided.
+* `max`: Determines the max amount of results to return from the database.  Defaults to `50` if none were provided.
 
 * `order`: Determines the order in which the results are sorted has to be either 'asc' or 'desc'.  Defaults to `asc` if not provided.
 
