@@ -24,16 +24,17 @@ function getRangeByName(arr, start, end, max){
   arr = arr.sort(sortHelper('name'));
   if(start){
     if(!nameRegex.test(start)) return [];
-    else start = start.match(/\d+/)[0]
+    else start = +start.match(/\d+/)[0]
   }else start = 0;
   if(end){
     if(!nameRegex.test(end)) end = Number.MAX_SAFE_INTEGER;
-    else end = end.match(/\d+/)[0]
+    else end = +end.match(/\d+/)[0]
   }else end = Number.MAX_SAFE_INTEGER;
   
+  console.log(start, end)
 
   while (i < arr.length && range.length < max) {
-    let id = arr[i].name.match(/\d+/)[0];
+    let id = +arr[i].name.match(/\d+/)[0];
     if(id > end) break;
     else if (id >= start) range.push(arr[i]);
     i++;
@@ -59,7 +60,8 @@ router.get('/', async (req, res, next) => {
 
     if (order && (order != 'asc' && order != 'desc')) return res.status(400).send('undefined');
     else order = order || 'asc';
-    max = max ? Math.min(max, DEFAULT_SIZE) : DEFAULT_SIZE;
+    if (max && !Number.isInteger(max)) return res.status(400).send('undefined');
+    else max = Math.min(max, DEFAULT_SIZE) || DEFAULT_SIZE;
 
     switch (by) {
       case 'id':
