@@ -154,12 +154,12 @@ describe('GET /apps with range query', () =>{
     expect(Array.isArray(response.body)).toBe(true);
     expect(response.body.length).toBeLessThanOrEqual(50);
     expect(response.body[0]).toEqual({
-      id: 999,
-      name: 'my-app-999'
+      id: 50,
+      name: 'my-app-050'
     });
     expect(response.body[lastIndex]).toEqual({
-      id: 950,
-      name: 'my-app-950'
+      id: 1,
+      name: 'my-app-001'
     });
     done();
   })
