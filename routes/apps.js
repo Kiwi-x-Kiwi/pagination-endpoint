@@ -44,14 +44,23 @@ function getRangeByName(arr, start, end, max){
 }
 
 function sortHelper(sortBy) {
-  return function (a, b) {
-    return a[sortBy] - b[sortBy]
+  
+  if(sortBy == 'id'){
+    return function (a, b) {
+      return a[sortBy] - b[sortBy]
+    }
+  }
+
+  return function(a,b){
+    let idA = +a.name.match(/\d+/)[0];
+    let idB = +b.name.match(/\d+/)[0];
+    return idA - idB;
   }
 }
 
 /* GET home page */
 router.get('/', async (req, res, next) => {
-  const DEFAULT_SIZE = 50;
+  const DEFAULT_SIZE = 999;
   let apps = await App.find().select('-_id -__v')
 
   if (req.query.range) {
