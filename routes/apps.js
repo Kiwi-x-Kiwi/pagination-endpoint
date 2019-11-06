@@ -60,7 +60,7 @@ function sortHelper(sortBy) {
 
 /* GET home page */
 router.get('/', async (req, res, next) => {
-  const DEFAULT_SIZE = 999;
+  const DEFAULT_SIZE = 50;
   let apps = await App.find().select('-_id -__v')
 
   if (req.query.range) {
